@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean class="mybeans.MyBean" id="first"></bean>
+	
+	<bean class="mybeans.MyLogic" id="second">
+		<constructor-arg ref="first"></constructor-arg>
+	</bean>
+	
+	<!-- <bean class="mybeans.MyStatefulObj" id="third"></bean> : null, 0 값-->
+	<bean class="mybeans.MyStatefulObj" id="third"><!-- : my-name, 100 값 --> 
+		<constructor-arg value="my-name"></constructor-arg>
+		<constructor-arg value="100"></constructor-arg>
+	</bean>
+	<!-- <bean class="mybeans.MyStatefulObj" id="third" scope="prototype"> : ioc관리대상은 아님
+		<constructor-arg value="my-name"></constructor-arg>
+		<constructor-arg value="100"></constructor-arg>
+	</bean> -->
+	
+	<bean class="mybeans.MyStatefulObj" id="fourth" primary="true"><!-- : my-name, 100 값 --> 
+		<property name="name" value="bysetter"></property>
+		<property name="number" value="400"></property>
+	</bean>
+</beans>

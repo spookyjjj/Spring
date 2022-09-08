@@ -20,6 +20,7 @@ public class CarService {
 //		for (int i = 0; i < list.size(); i++) {
 //			result[i] = repo.add(list.get(i));
 //		}
+		
 		//2. 배치기능을 이용해서 한방에 해보기
 		int[] result = repo.batchInsert(list);
 		return result;
@@ -29,5 +30,20 @@ public class CarService {
 	public int delete(int id) {
 		return repo.delete(id);
 	}
+	
+	public List<Car> list() {
+		return repo.getAll();
+	}
+	
+	public Car getById(int id) {
+		return repo.getById(id);
+	}
 
+	public int add(Car car) {
+		return repo.add(car);
+	}
+	
+	public int update(Car car) {
+		return repo.update(car);
+	}
 }

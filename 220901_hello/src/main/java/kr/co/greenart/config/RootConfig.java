@@ -10,13 +10,14 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @PropertySource("classpath:/kr/co/greenart/config/mysql.properties")
-@ComponentScan("kr.co.greenart.model.car") //test때 ComponentScan으로 불러오려고~
+//@ComponentScan("kr.co.greenart.model.car") //test때 ComponentScan으로 불러오려고~
 @EnableTransactionManagement //트렌젝션관리를 시작하겠다~! -> 등록할 관리자 스펙은 수기작성 후 bean등록 필요
 public class RootConfig {
 //기본적으로 있던 root-context.xml을 대신해서 만든 클래스 -> root-context.xml은 삭제해도 됨
@@ -52,6 +53,13 @@ public class RootConfig {
 	public PlatformTransactionManager txManager(DataSource ds) {
 	//트렌젝션 관리할 매니저임~
 		return new DataSourceTransactionManager(ds);
+	}
+	
+	@Bean
+	@Autowired
+	public NamedParameterJdbcTemplate namedParameterJdbcTemplate(DataSource ds) {
+	//rowMapper부분 간략화 하기위해 사용 -> 실제쓰는건 CarRepositoryNamed에서
+		return new NamedParameterJdbcTemplate(ds);
 	}
 }
 

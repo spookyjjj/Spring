@@ -1,17 +1,28 @@
 package kr.co.greenart.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.filter.CommonsRequestLoggingFilter;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import kr.co.greenart.controller.MyInterceptor;
 
 @Configuration
 @EnableWebMvc
 @ComponentScan("kr.co.greenart") // 1.Component-scan기능 대체
 public class WebConfig implements WebMvcConfigurer {
 //기본적으로 있던 servlet-context를 대체하려고 만든 클래스임! -> servlet-context 삭제 가능
+	@Autowired
+	private MyInterceptor interceptor;
 	
 	// 2.resources mapping기능 대체
 	@Override
@@ -24,6 +35,17 @@ public class WebConfig implements WebMvcConfigurer {
 		registry.jsp("/WEB-INF/views/",".jsp");
 	}
 	
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		registry.addInterceptor(interceptor).addPathPatterns("/my/**");
+	}
+	
+	@Bean
+	public MultipartResolver multipartResolver() { //빈을 찾는 방식이 type이 아니라 이름이다!! 이름을 꼭 이걸로 해줘야함
+		CommonsMultipartResolver resolver = new CommonsMultipartResolver();
+		resolver.setDefaultEncoding("UTF-8");
+		return resolver;
+	}
 }
 
 //servlet-context.xml의 내용~~

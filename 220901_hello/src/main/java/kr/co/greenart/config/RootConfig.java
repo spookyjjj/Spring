@@ -44,7 +44,7 @@ public class RootConfig {
 	@Bean
 	@Autowired
 	public JdbcTemplate jdbcTemplate(DataSource ds) { 
-	//파라미터 부분에 필요한거 적어놓고 autowired하면 알아서 가져와줌!!
+	//파라미터 부분에 필요한거 적어놓고(여기서는 DataSource) autowired하면 알아서 가져와줌!!
 	//즉, 필드, 생성자, setter, 메소드 위에 적으면 알아서 가져온다 (setter도 결국은 메소드였음!)
 		return new JdbcTemplate(ds);
 	}

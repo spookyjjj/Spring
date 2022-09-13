@@ -7,8 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<p>포워드 : ${ forwardtest }</p>
-	<p>리다이렉트 : ${ redirecttest }</p>
-	<p>파람 : ${ param.redirecttest }</p> <!-- @GetMapping("/3")에서 넘어옴 -->
+	<p>${ burn }</p> <!-- requestScop가 먼저임 -->
+	<p>${ sessionScope.burn }</p>
 </body>
 </html>

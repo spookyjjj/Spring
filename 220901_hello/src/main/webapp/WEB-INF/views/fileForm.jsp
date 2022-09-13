@@ -7,8 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<p>포워드 : ${ forwardtest }</p>
-	<p>리다이렉트 : ${ redirecttest }</p>
-	<p>파람 : ${ param.redirecttest }</p> <!-- @GetMapping("/3")에서 넘어옴 -->
+	<form method="post" enctype="multipart/form-data">
+		<input type="file" name="upload" />
+		<input type="submit" />
+	</form>
 </body>
 </html>

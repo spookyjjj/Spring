@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -19,6 +20,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @PropertySource("classpath:/kr/co/greenart/config/mysql.properties")
 //@ComponentScan("kr.co.greenart.model.car") //test때 ComponentScan으로 불러오려고~
 @EnableTransactionManagement //트렌젝션관리를 시작하겠다~! -> 등록할 관리자 스펙은 수기작성 후 bean등록 필요
+@EnableAspectJAutoProxy //aspect관리를 시작하겠다~! -> 최상위 패키지에 있는 클래스에 annotation을 적용해서 AOP를 찾을 수 있게 도와줌
 public class RootConfig {
 //기본적으로 있던 root-context.xml을 대신해서 만든 클래스 -> root-context.xml은 삭제해도 됨
 	@Value("${jdbc.drivername}")

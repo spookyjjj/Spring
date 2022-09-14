@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 @Component
-public class MyInterceptor extends HandlerInterceptorAdapter{
+public class MyInterceptor extends HandlerInterceptorAdapter {
 	private static final Logger logger = LoggerFactory.getLogger(MyInterceptor.class);
 	
 
@@ -38,7 +38,7 @@ public class MyInterceptor extends HandlerInterceptorAdapter{
 		String value = (String) request.getAttribute("burn");
 		value += ". 핸들러 처리 후 어트리뷰트 변경";
 		request.setAttribute("burn", value);
-		//ModelAndView가 있기 때문에 여기서 후처리도 가능~
+		//ModelAndView가 있기 때문에 여기서 모델을 보면서 뷰를 만든다! 즉, 후처리가 가능하다~
 	}
 	
 	//핸들러 전,후가 main이고 뷰 생성 후 인 애가 추가되는 느낌~

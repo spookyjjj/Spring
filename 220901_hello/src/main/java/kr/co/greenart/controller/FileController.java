@@ -57,7 +57,7 @@ public class FileController {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
 		try {
-			headers.add("content-Disposition", "attachement; filename=" + URLEncoder.encode(item, "UTF-8"));
+			headers.add("content-Disposition", "attachment; filename=" + URLEncoder.encode(item, "UTF-8"));
 			//헤더부분에는 인코딩 필요
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();

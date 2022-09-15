@@ -44,15 +44,15 @@ public class MyAspect {
 	@Pointcut("within(@org.springframework.stereotype.Repository *)")
 	public void repository() {}
 	
-	@Around("repository()") //어라운드는 메소드 전후로 전부~ -> 메소드 안에서 jp.proceed()로 전후 구분하면 됨
+	@Around("repository()") //어라운드는 실행 전후 전부~ -> 메소드 내에서 JoinPoint로 전후 구분할거니깐 jp는 필수요소!
 	public Object loggingTime(ProceedingJoinPoint jp) throws Throwable {
 		long start = System.nanoTime();
 		logger.info("시작시간: " + start); //jp.proceed() 전!!
-		Object proceed =  jp.proceed(); //애가 실제 실행되는 애
+		Object proceed =  jp.proceed(); //애가 필수이며, 실제 메소드 실행되는 시점!
 		long end = System.nanoTime(); //jp.proceed() 후!!
 		logger.info("종료시간: " + end);
 		
 		logger.info(jp.getSignature() + "메소드의 실행시간: " + (end - start));
-		return proceed;
+		return proceed; //리턴은 이렇게 처리해주면 된다~ 메소드의 반환값 그대로 얘도 반환하면 되니깐
 	}
 }

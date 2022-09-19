@@ -1,3 +1,5 @@
+- 220901
+  - https://velog.io/@damiano1027/Spring-%EC%9D%98%EC%A1%B4%EC%84%B1-%EC%A3%BC%EC%9E%85-%EC%A0%9C%EC%96%B4%EC%9D%98-%EC%97%AD%EC%A0%84
 - 220902
   - Bean
 - 220905
@@ -6,3 +8,6 @@
 https://velog.io/@taeha7b/api-restapi-restfulapi
 - 2209
 - 2209
+----
+- 어떨 때 쿠키? 어떨 때 세션?
+  - https://dev-coco.tistory.com/61

@@ -22,7 +22,8 @@ public class RequestHandling {
 //	}
 	
 	@RequestMapping(value = "/req", method = RequestMethod.GET)
-	public String req(@RequestParam int param, @RequestParam int param2, Model model) { //요청을 달라하면 DispatcherServlet에서 넘겨줌~
+	//localhost:8080/greenart/req?param=1&param2=4 로 접속하면 plusresult에서 5가 나옴
+	public String req(@RequestParam int param, @RequestParam int param2, Model model) {
 		logger.info(String.valueOf(param + param2));
 		//이전까지는 request객체에 심어서 전해줄 값을 전달했었음..
 		//spring에서는 model을 사용하자 -> 범위를 내가 지정해서 입맛대로 조정가능함!

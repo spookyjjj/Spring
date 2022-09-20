@@ -13,6 +13,7 @@ public class MyService {
 	private MyDataRepository repo;
 	
 	public Iterable<Integer> numberService() {
+		System.out.println("myset을 @Qualifier하는 service");
 		return repo.getMyNumbers();
 	}
 }

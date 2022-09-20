@@ -11,15 +11,15 @@ import org.springframework.stereotype.Component;
 @Scope(scopeName=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 @Primary
 public class ThirdComponent {
-	private String value;
+	private String word;
 	private int num;
 	
-	public ThirdComponent(@Value(value = "vvv") String value, @Value("100") int num) {
-		this.value = value;
+	public ThirdComponent(@Value("vvv") String word, @Value("100") int num) {
+		this.word = word;
 		this.num = num;
 	}
 	public void printValue() {
-		System.out.println(value);
+		System.out.println(word);
 		System.out.println(num);
 	} 
 }

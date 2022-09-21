@@ -1,5 +1,8 @@
 package kr.co.greenart.model.car;
 
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
 public class Car {
 	private int id;
 	private String model;

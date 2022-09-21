@@ -20,7 +20,8 @@ import kr.co.greenart.controller.MyInterceptor;
 @EnableWebMvc
 @ComponentScan("kr.co.greenart") // 1.Component-scan기능 대체
 public class WebConfig implements WebMvcConfigurer {
-//기본적으로 있던 servlet-context를 대체하려고 만든 클래스임! -> servlet-context 삭제 가능
+//★servlet-context를 대체하려고 만든 클래스임! -> servlet-context 삭제 가능
+	
 	@Autowired
 	private MyInterceptor interceptor;
 	
@@ -48,8 +49,8 @@ public class WebConfig implements WebMvcConfigurer {
 	}
 }
 
-//servlet-context.xml의 내용~~
-//
+	//servlet-context.xml의 내용~~
+
 //<?xml version="1.0" encoding="UTF-8"?>
 //<beans:beans xmlns="http://www.springframework.org/schema/mvc"
 //	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"

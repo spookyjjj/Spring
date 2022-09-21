@@ -11,3 +11,7 @@ https://velog.io/@taeha7b/api-restapi-restfulapi
 ----
 - 어떨 때 쿠키? 어떨 때 세션?
   - https://dev-coco.tistory.com/61
+- @EnableWebMvc 애노테이션과 WebMvcConfigurer 인터페이스
+  - https://pangtrue.tistory.com/84
+- src/main/resources 디렉토리 관리
+  - https://kim-jong-hyun.tistory.com/123

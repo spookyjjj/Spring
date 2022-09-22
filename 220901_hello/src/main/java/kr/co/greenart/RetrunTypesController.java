@@ -32,16 +32,19 @@ public class RetrunTypesController {
 		return mv;
 	}
 	
-	@GetMapping("/respentity")
-	//public ResponseEntity<String> entity(ResponseEntity<String> en) { //얘도 마찬가지로 이렇게 가능
-	public ResponseEntity<String> entity() {
+//	@GetMapping("/respentity")
+//	public ResponseEntity<String> entity(ResponseEntity<String> en) {
 //		String body = "바디 내용입니다";
 //		HttpHeaders headers = new HttpHeaders();
 //		headers.add("Content-Type", "text/plain; charset=utf-8");
-//		ResponseEntity<String> en = new ResponseEntity<>(body, headers, HttpStatus.OK);
+//		en = new ResponseEntity<>(body, headers, HttpStatus.OK);
+//		//en은 위와같이 메소드 들어오기 전에 요청해서 끌고들어와도 되고,
+//		//메소드 안에서 ResponseEntity<String> en = new ResponseEntity<>(body, headers, HttpStatus.OK);해도됨
 //		return en;
-		//똑같은 내용을 이렇게도 가능하다~~!!
-		//return ResponseEntity.ok().header("Content-Type", "text/plain; charset=utf-8").body("바디 내용입니다");
+//	}
+	//그냥 이렇게 해도 됨~~
+	@GetMapping("/respentity")
+	public ResponseEntity<String> entity() {
 		return ResponseEntity.ok()
 				.header(HttpHeaders.CONTENT_TYPE, "text/plain; charset=utf-8")
 				.body("바디 내용입니다");

@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-@Repository
+@Repository("noDB")
 public class UserRepositoryListImpl implements UserRepository {
 	private List<User> list = new ArrayList<>();
 	

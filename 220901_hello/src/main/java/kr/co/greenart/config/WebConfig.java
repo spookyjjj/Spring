@@ -16,21 +16,22 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import kr.co.greenart.controller.MyInterceptor;
 
-@Configuration
-@EnableWebMvc
-@ComponentScan("kr.co.greenart") // 1.Component-scan기능 대체
+@Configuration //bean설정파일임을 알려주는 어노테이션~! (ServletConfig니깐 controll제어 관련~)
+@EnableWebMvc  //★어노테이션 기반의 SpringMVC를 구성할 때 필요한 bean설정을 자동으로 해주는 역할 (= <annotation-driven/>)
+@ComponentScan("kr.co.greenart") //해당 클래스에 @Component가 있으면 IoC Container에 자동 bean등록
 public class WebConfig implements WebMvcConfigurer {
-//★servlet-context를 대체하려고 만든 클래스임! -> servlet-context 삭제 가능
+//servlet-context를 대체하려 만든 클래스
+//★WebMvcConfigurer상속? -> @EnableWebMvc에서 제공하는 bean을 커스터마이징 할 수 있는 기능!! -> 둘이 한 세트!!
 	
 	@Autowired
 	private MyInterceptor interceptor;
 	
-	// 2.resources mapping기능 대체
+	//<resources mapping>역할
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 	}
-	// 3.'Resolves views selected by @Controllers to /WEB-INF/views의 .jsp' 기능 대체
+	//'Resolves views selected by @Controllers to /WEB-INF/views의 .jsp' 기능
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {
 		registry.jsp("/WEB-INF/views/",".jsp");
@@ -49,8 +50,9 @@ public class WebConfig implements WebMvcConfigurer {
 	}
 }
 
-	//servlet-context.xml의 내용~~
-
+	//servlet-context.xml
+	//DispatcherServlet이 자동등록한 bean인 HanlderMapping, HandlerAdapter, ViewResolver 설정하기 (multipartResolver는 따로 추가해야함)
+	
 //<?xml version="1.0" encoding="UTF-8"?>
 //<beans:beans xmlns="http://www.springframework.org/schema/mvc"
 //	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"

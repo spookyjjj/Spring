@@ -16,13 +16,13 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@Configuration
+@Configuration //bean설정파일임을 알려주는 어노테이션~! (RootConfig니깐 DB정보 관련~)
 @PropertySource("classpath:/kr/co/greenart/config/mysql.properties")
 //@ComponentScan("kr.co.greenart.model.car") //test때 ComponentScan으로 불러오려고~
 @EnableTransactionManagement //트렌젝션관리를 시작하겠다~! -> 등록할 관리자 스펙은 수기작성 후 bean등록 필요
 @EnableAspectJAutoProxy //aspect관리를 시작하겠다~! -> 최상위 패키지에 있는 클래스에 annotation을 적용해서 AOP를 찾을 수 있게 도와줌
 public class RootConfig {
-//★root-context.xml을 대신해서 만든 클래스 -> root-context.xml은 삭제해도 됨
+//root-context.xml를 대체하려 만든 클래스
 	
 	@Value("${jdbc.drivername}")
 	private String drivername;

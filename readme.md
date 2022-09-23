@@ -4,6 +4,8 @@
     - xml에 <bean>으로 하나하나 등록
     - xml에 context태그먹이고 annotaion으로 등록
   - 스프링 MVC 구조?
+  - 외부라이브러리 bean등록
+    - @ComponentScan과 @Bean사용
 - [220902](./Spring정리/220902.md)
   - web.xml 등 -> java파일로 변경
   - Filter

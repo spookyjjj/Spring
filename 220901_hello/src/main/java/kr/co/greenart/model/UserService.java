@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
 	private static final Logger logger = LoggerFactory.getLogger(UserService.class);
 	@Autowired
-	@Qualifier("noDB")
+	@Qualifier("yesDB")
 	private UserRepository repo; //인터페이스 달라하면 구현체를 찾아서 넣어준다
 	
 	public List<User> list() {

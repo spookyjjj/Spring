@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -35,6 +36,7 @@ public class CarRepositoryMySQL implements CarRepository{
 	@Override
 	public Car getById(int id) {
 		return template.queryForObject("select * from cars where id=?", mapper, id);
+		
 	}
 
 	@Override

@@ -28,14 +28,14 @@ public class CarRepoTest {
 		assertNotNull(repo);
 	}
 	
-	@BeforeClass
-	public static void addTestData() {
-		//테스트 전에 환경 만들고 싶을때 이걸 씀 static하게 선언 필요
+//	@BeforeClass
+//	public static void addTestData() {
+//		//테스트 전에 환경 만들고 싶을때 이걸 씀 static하게 선언 필요 -> 어케 쓰는건지 연구 더 하기
 //		Random r = new Random();
 //		repo.add(new Car(0, "테스트자료" + r.nextInt(10000), r.nextInt(10000)));
 //		repo.add(new Car(0, "테스트자료" + r.nextInt(10000), r.nextInt(10000)));
 //		repo.add(new Car(0, "테스트자료" + r.nextInt(10000), r.nextInt(10000)));
-	} 
+//	} 
 	
 	@Test
 	public void create() {

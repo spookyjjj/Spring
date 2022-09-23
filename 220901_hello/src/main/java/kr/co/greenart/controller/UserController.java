@@ -45,13 +45,14 @@ public class UserController {
 //		return "userForm";
 //	}
 	//위의 방법을 @ModelAttribute써서도 가능 
-	@GetMapping("/user") 
-	public String userForm(@ModelAttribute("userinfo") User user) { //@ModelAttribute가 파라미터에 있다면 값가져오고, 없으면 만든다!
-		return "userForm";
-	}
-	@ModelAttribute("userinfo") //'없으면 만든다!'가 이거임~ 메소드에 있는 @ModelAttribute는 모델객체에 반환값 할당
+	@ModelAttribute("userinfo") //여기 방문할 때 마다 이 과정은 일어남!! 항상 userinfo는 존재 -> 후에 내가 입력한 값으로 덮어씌우는거임~
 	public User user() {
+		System.out.println("모델초기화과정");
 		return new User("이름을 입력하세요", 30);
+	}
+	@GetMapping("/user") 
+	public String userForm(@ModelAttribute("userinfo") User user) { //가진 requestParam으로 User바인딩해서 모델에 넣기
+		return "userForm";
 	}
 	
 	//===========post================
@@ -83,7 +84,7 @@ public class UserController {
 	//위의 방법처럼 Validate하는 클래스 수동으로 안만들고  Hibernate Validator Engine을 써서 어노테이션으로 쉽게 유효성 검사도 가능!
 	//hibernate-validator라이브러리 추가하고 -> 유효성 검사할 User클래스에 어노테이션 붙이고 -> 여기서 @Valid먹이면 끝!
 	@PostMapping("/user")
-	public String submit(@ModelAttribute("userinfo") @Valid User user, BindingResult errors) { 
+	public String submit(@ModelAttribute("userinfo") @Valid User user, BindingResult errors) { //가진 requestParam으로 User바인딩해서 모델에 넣기
 		logger.info("입력정보: " + user.toString());
 		if (errors.hasErrors()) {
 			return "userForm";

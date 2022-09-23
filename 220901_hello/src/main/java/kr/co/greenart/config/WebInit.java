@@ -2,6 +2,7 @@ package kr.co.greenart.config;
 
 import javax.servlet.Filter;
 
+import org.springframework.context.ApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
@@ -11,12 +12,16 @@ public class WebInit extends AbstractAnnotationConfigDispatcherServletInitialize
 //-> WebApplication이 초기화되는 시점에 DispatcherServlet를 등록할건데 Annotation기반으로 할거라는거~
 	
 	//root-context.xml -> RootConfig.class로 대체
+	//ApplicationContext context = new AnnotationConfigApplicationContext(RootConfig.class)로 했던
+	//context에 RootConfig설정 올리는 과정은 얘가 자동으로 해줌
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
 		return new Class[] { RootConfig.class }; 
 	}
 	
 	//servlet-context.xml -> WebConfig.class로 대체
+	//ApplicationContext context = new AnnotationConfigApplicationContext(WebConfig.class)로 했던
+	//context에 WebConfig설정 올리는 과정은 얘가 자동으로 해줌
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
 		return new Class[] { WebConfig.class };

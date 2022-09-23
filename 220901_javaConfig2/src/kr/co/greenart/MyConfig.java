@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 //그 예로, List와 Set으로 실습해볼거임~~
 //ClassPathXmlApplicationContext("component-scan.xml") -> AnnotationConfigApplicationContext(MyConfig.class);
 
-@Configuration //★★설정을 가진 component다~~
+@Configuration //component이긴함 근데 빈등록당하는게 목적이 아니라 ★★빈 설정을한거니 context로 세팅해야함~
 @ComponentScan("kr.co.greenart")
 public class MyConfig {
 	//메소드의 형태로 bean을 등록하여야 한다~!

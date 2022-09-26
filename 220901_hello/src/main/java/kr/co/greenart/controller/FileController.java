@@ -35,7 +35,7 @@ public class FileController {
 	public String submit(@RequestParam MultipartFile upload) {
 		String filename = upload.getOriginalFilename();
 		int result = repo.save(upload);
-		return "redirect:file/result";
+		return "redirect:/file/result";
 	}
 	
 	@GetMapping("/result")
@@ -46,9 +46,9 @@ public class FileController {
 	}
 	
 	@GetMapping("/down")
-	public ResponseEntity<Resource> down(@RequestParam String item) {
+	public ResponseEntity<Resource> down(@RequestParam String filename) {
 		//응답바디에는 파일 자체가 들어가야한다
-		Resource resource = repo.getByName(item);
+		Resource resource = repo.getByName(filename);
 		if (resource == null) {
 			return (ResponseEntity<Resource>) ResponseEntity.notFound();
 		}
@@ -57,7 +57,7 @@ public class FileController {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
 		try {
-			headers.add("content-Disposition", "attachment; filename=" + URLEncoder.encode(item, "UTF-8"));
+			headers.add("content-Disposition", "attachment; filename=" + URLEncoder.encode(filename, "UTF-8"));
 			//헤더부분에는 인코딩 필요
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();

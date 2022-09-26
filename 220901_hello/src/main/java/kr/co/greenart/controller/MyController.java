@@ -33,7 +33,7 @@ public class MyController {
 		return "myview";
 	}
 	
-	//nullpointexception발생시키기 위해 만든거~
+	//에러 핸들러 적용을 위해 nullpointexception발생시키려고 만든거~
 	@GetMapping("/null")
 	public String nullExcep() {
 		throw new NullPointerException("임의로 발생시킨 널 예외");

@@ -11,7 +11,7 @@
 	<c:if test="${ not empty list }">
 		<ul>
 		<c:forEach var="item" items="${ list }">
-			<c:url value="/file/down?item=${ item }" var="link"/>
+			<c:url value="/file/down?filename=${ item }" var="link"/>
 			<li><a href="${ link }">${ item }</a></li>
 		</c:forEach>
 		</ul>

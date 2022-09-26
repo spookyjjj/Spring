@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @Controller
 public class TestModelSession {
 	//@SessionAttributes("modelname")는 다른 클래스로 넘어가면 값을 불러오지 못함
-	@GetMapping("/testModel")
+	@GetMapping("/testModeloutclass")
 	public @ResponseBody String testModel(Model model) {
 		return new HashMap<>(model.asMap()).toString();
 	}

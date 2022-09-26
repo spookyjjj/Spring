@@ -43,7 +43,7 @@ public class WebConfig implements WebMvcConfigurer {
 	}
 	
 	@Bean
-	public MultipartResolver multipartResolver() { //빈을 찾는 방식이 type이 아니라 이름이다!! 이름을 꼭 이걸로 해줘야함
+	public MultipartResolver multipartResolver() { //빈을 찾는 방식이 type이 아니라 메소드이름이다!! 이름을 꼭 이걸로 해줘야함
 		CommonsMultipartResolver resolver = new CommonsMultipartResolver();
 		resolver.setDefaultEncoding("UTF-8");
 		return resolver;

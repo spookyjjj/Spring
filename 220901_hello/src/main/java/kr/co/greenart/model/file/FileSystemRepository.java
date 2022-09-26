@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Repository;
@@ -18,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 @Repository
+//@Primary
 public class FileSystemRepository implements FileRepository {
 	private final File saveFolder = new File("d:\\Temp\\");
 	private final Path root = Paths.get("d:\\temp\\");

@@ -22,9 +22,9 @@ public class MyInterceptor extends HandlerInterceptorAdapter {
 		
 		HttpSession session = request.getSession(false); //이미 생성된 세션이 없다면 null을 반환
 		if (session != null) {
-			session.removeAttribute("burn");
+			session.removeAttribute("burn"); //세션값 지우고, 
 		}
-		request.setAttribute("burn", "요청객체에 새로운 어트리뷰트 생성");
+		request.setAttribute("burn", "요청객체에 새로운 어트리뷰트 생성"); //request에 값 담음!
 		
 		return true;
 		//return을 false를 주면 요청흐름이 여기서 끊김 <- 로그인필터로 대체가능 

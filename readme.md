@@ -28,11 +28,13 @@
   - session값 vs model값 vs flash값
 - [220913](./Spring정리/220913.md)
   - Interceptor
-  - error핸들러
-  - 이진데이터
+  - AOP(spring AOP)
+  - error핸들러 (@ExceptionHandler, @ControllerAdvice)
 - [220914](./Spring정리/220914.md)
-  - AOP
-  
+  - 이진데이터(Apache Commons FileUpload)
+    - 보낼 때: form enctype="multipart/form-data", input type="file"
+    - 받을 때: .setContentType(MediaType.APPLICATION_OCTET_STREAM), content-Disposition은 attachment
+    
 ----
 
 - [스프링 공부하기 좋은 티스토리ㅎㅎ진성픽](https://dev-coco.tistory.com/70)

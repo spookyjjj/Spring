@@ -19,10 +19,12 @@
     - rowMapper
   - Junit이용한 test
 - [220907](./Spring정리/220907.md)
+  - JdbcTemplate에서 batch사용
+  - ★NamedParameterJdbcTemplate
   - transaction 
+  - jackson라이브러리 -> json포맷
   - show view의 requestMapping / spring explorer 활용
 - [220908](./Spring정리/220908.md)
-  - NamedParameterJdbcTemplate
   - session값 vs model값 vs flash값
 - [220913](./Spring정리/220913.md)
   - Interceptor

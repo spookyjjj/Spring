@@ -1,8 +1,9 @@
 package kr.co.green;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+
+import org.springframework.web.bind.annotation.RequestBody;
 
 public class Board {
 
@@ -10,21 +11,28 @@ public class Board {
 	private String title;
 	private String content;
 	private String reg_date;
+	private String mod_date;
 	
-	public Board() {};
-	
-	public Board(String title, String content) {
-		this.title = title;
-		this.content = content;
-//		this.reg_date = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+	public Board() { //reg_date를 걍 현재시간으로 씀
+		this.reg_date = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+		this.mod_date = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 	}
 	
-	public Board(int id, String title, String content, String reg_date) {
+	//@RequestBody Board board는 이거 못찾아오고 걍 빈생성자로 감!!
+//	public Board(String title, String content) {
+//		super();
+//		this.title = title;
+//		this.content = content;
+//		this.reg_date = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+//	}
+	
+	public Board(int id, String title, String content, String reg_date, String mod_date) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.content = content;
 		this.reg_date = reg_date;
+		this.mod_date = mod_date;
 	}
 
 	public int getId() {
@@ -41,6 +49,10 @@ public class Board {
 
 	public String getReg_date() {
 		return reg_date;
+	}
+	
+	public String getMod_date() {
+		return mod_date;
 	}
 
 	public void setId(int id) {
@@ -59,11 +71,15 @@ public class Board {
 		this.reg_date = reg_date;
 	}
 
+	public void setMod_date(String mod_date) {
+		this.mod_date = mod_date;
+	}
+
 	@Override
 	public String toString() {
-		return "Board [id=" + id + ", title=" + title + ", content=" + content + ", reg_date=" + reg_date + "]";
+		return "Board [id=" + id + ", title=" + title + ", content=" + content + ", reg_date=" + reg_date
+				+ ", mod_date=" + mod_date + "]";
 	}
 	
-	
-	
+
 }

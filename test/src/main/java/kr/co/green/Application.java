@@ -8,6 +8,8 @@ public class Application {
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
+//        Board a = new Board("as", "asdf");
+//        System.out.println(a);
     }
 
 	

@@ -25,12 +25,13 @@ public class BoardService {
 			int id = rs.getInt("id");
 			String title = rs.getString("title");
 			String content = rs.getString("content");
-			String reg_date = toDate(rs.getTimestamp("reg_date"));
-			return new Board(id, title, content, reg_date);
+			String reg_date = toDateFormat(rs.getTimestamp("reg_date"));
+			String mod_date = toDateFormat(rs.getTimestamp("mod_date"));
+			return new Board(id, title, content, reg_date, mod_date);
 		}
 	}
 	
-	private String toDate(Timestamp timestamp) {
+	private String toDateFormat(Timestamp timestamp) {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String format = formatter.format(timestamp.getTime());
 		
@@ -46,6 +47,24 @@ public class BoardService {
 	}
 	
 	public int add(Board board) {
-		return jdbcTemplate.update("update board (title, content, reg_date) values (?, ?, ?)", board.getTitle(), board.getContent(), Timestamp.from(Instant.now()));
+		return jdbcTemplate.update("insert into board (title, content, reg_date, mod_date) values (?, ?, ?, ?)", board.getTitle(), board.getContent(), board.getReg_date(), board.getMod_date());
+		//return jdbcTemplate.update("insert into board (title, content, reg_date) values (?, ?, ?)", board.getTitle(), board.getContent(), board.getReg_date());
 	}
+	
+	public int update(int id, Board board) {//제목만 바꿀수도, 내용만 바꿀수도있다! null null // null 값 // 값 null // 값 값
+		if (board.getTitle() == null && board.getContent() == null) {
+			return 0;
+		} else if (board.getTitle() == null) {
+			return jdbcTemplate.update("update board set content = ?, mod_date = ? where id = ?", board.getContent(), board.getMod_date(), id);
+		} else if (board.getContent() == null) {
+			return jdbcTemplate.update("update board set title = ?, mod_date = ? where id = ?", board.getTitle(), board.getMod_date(), id);
+		} else {
+			return jdbcTemplate.update("update board set title = ?, content = ?, mod_date = ? where id = ?", board.getTitle(), board.getContent(), board.getMod_date(), id);
+		}
+	}
+
+	public int delete(int id) {
+		return jdbcTemplate.update("delete from board where id = ?", id);
+	}
+
 }

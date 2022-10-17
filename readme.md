@@ -2,7 +2,7 @@
   - 스프링 프레임워크? 설치? 동작과정?
   - bean등록 
     - xml에 <bean>으로 하나하나 등록
-    - xml에 context태그먹이고 annotaion으로 등록
+    - xml에 context태그먹이고 annotaion으로 등록 
   - 스프링 MVC 구조?
   - 외부라이브러리 bean등록
     - @ComponentScan과 @Bean사용
